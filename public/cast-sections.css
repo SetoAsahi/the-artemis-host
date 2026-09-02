@@ -16,3 +16,5 @@
 .brand{display:block!important;width:150px!important;height:82px!important;min-width:150px!important;background:url('/assets/the-artemis-logo.png') center/contain no-repeat!important;overflow:hidden}.brand>*{opacity:0!important;pointer-events:none!important}.footer-logo{width:210px!important;height:140px!important;background:url('/assets/the-artemis-logo.png') left center/contain no-repeat!important;overflow:hidden}.footer-logo>*{opacity:0!important;pointer-events:none!important}
 @media(max-width:600px){.brand{width:108px!important;height:64px!important;min-width:108px!important}.footer-logo{width:170px!important;height:114px!important}}
 
+/* Prevent the former hero from flashing before live site data is loaded. */
+#heroImage{opacity:0;transition:opacity .35s ease}#heroImage.is-ready{opacity:1}
