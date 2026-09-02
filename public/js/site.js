@@ -44,7 +44,8 @@ function render(){
   }
   document.title=`${b.name||'The Artemis'} | Luxury Host Club`;
 
-  const copy=SITE.copy||{};
+  let copy=SITE.copy||{};
+  if(!Object.keys(copy).length&&String(SITE.event?.description||'').startsWith('__SITE_COPY__')){try{copy=JSON.parse(String(SITE.event.description).slice(13))}catch{copy={}}}
   const setText=(selector,value)=>{const el=q(selector);if(el&&value!=null&&value!=='')el.textContent=value};
   setText('.hero-kicker',copy.heroKicker);
   if(copy.heroLine1||copy.heroLine2){const h=q('.hero h1');if(h)h.innerHTML=`${esc(copy.heroLine1||'OWN')}<br><em>${esc(copy.heroLine2||'THE NIGHT.')}</em>`;}
