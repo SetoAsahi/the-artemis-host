@@ -35,7 +35,13 @@ function render(){
   if(q('#heroSubtitle'))q('#heroSubtitle').textContent=b.subtitle||'';
   if(q('#heroTagline'))q('#heroTagline').textContent=b.tagline||'';
   if(q('#heroIntro'))q('#heroIntro').textContent=b.intro||'';
-  if(q('#heroImage'))q('#heroImage').src=b.heroImage||'/assets/hero-lounge.svg';
+  if(q('#heroImage')){
+    const hero=q('#heroImage');
+    hero.classList.remove('is-ready');
+    hero.onload=()=>hero.classList.add('is-ready');
+    hero.src=b.heroImage||'/assets/26327603_l.jpg';
+    if(hero.complete&&hero.naturalWidth)hero.classList.add('is-ready');
+  }
   document.title=`${b.name||'The Artemis'} | Luxury Host Club`;
 
   const cast=Array.isArray(SITE.cast)?SITE.cast:[];
