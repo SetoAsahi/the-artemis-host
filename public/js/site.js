@@ -44,6 +44,20 @@ function render(){
   }
   document.title=`${b.name||'The Artemis'} | Luxury Host Club`;
 
+  const copy=SITE.copy||{};
+  const setText=(selector,value)=>{const el=q(selector);if(el&&value!=null&&value!=='')el.textContent=value};
+  setText('.hero-kicker',copy.heroKicker);
+  if(copy.heroLine1||copy.heroLine2){const h=q('.hero h1');if(h)h.innerHTML=`${esc(copy.heroLine1||'OWN')}<br><em>${esc(copy.heroLine2||'THE NIGHT.')}</em>`;}
+  setText('.experience .eyebrow',copy.experienceEyebrow);
+  if(copy.experienceLine1||copy.experienceLine2){const h=q('.experience h2');if(h)h.innerHTML=`${esc(copy.experienceLine1||'その一夜を、')}<br><em>${esc(copy.experienceLine2||'記憶に残る物語へ。')}</em>`;}
+  if(copy.experienceDescription){const p=q('.experience>p:last-child');if(p)p.innerHTML=esc(copy.experienceDescription).replace(/\n/g,'<br>');}
+  setText('#cast .eyebrow',copy.hostEyebrow);setText('#cast h2',copy.hostTitle);
+  setText('#ranking .eyebrow',copy.rankingEyebrow);setText('#ranking h2',copy.rankingTitle);setText('#ranking .section-heading p:not(.eyebrow)',copy.rankingDescription);
+  setText('#today .eyebrow',copy.todayEyebrow);setText('#today h2',copy.todayTitle);setText('#today .section-heading>p',copy.todayDescription);
+  setText('#news .eyebrow',copy.newsEyebrow);setText('#news h2',copy.newsTitle);
+  setText('#system .eyebrow',copy.systemEyebrow);setText('#system h2',copy.systemTitle);setText('#system .system-grid>div>p:last-child',copy.systemDescription);
+  if(copy.footerCopyright){const f=q('footer>span');if(f)f.innerHTML=`© ${new Date().getFullYear()} ${esc(copy.footerCopyright)}`;}
+
   const cast=Array.isArray(SITE.cast)?SITE.cast:[];
   const byId=new Map(cast.map((c,i)=>[castId(c,i),c]));
 
