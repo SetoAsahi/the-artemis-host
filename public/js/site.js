@@ -46,18 +46,19 @@ function render(){
 
   let copy=SITE.copy||{};
   if(!Object.keys(copy).length&&String(SITE.event?.description||'').startsWith('__SITE_COPY__')){try{copy=JSON.parse(String(SITE.event.description).slice(13))}catch{copy={}}}
-  const setText=(selector,value)=>{const el=q(selector);if(el&&value!=null&&value!=='')el.textContent=value};
+  const hasCopy=key=>Object.prototype.hasOwnProperty.call(copy,key);
+  const setText=(selector,value)=>{const el=q(selector);if(el&&value!=null)el.textContent=value};
   setText('.hero-kicker',copy.heroKicker);
-  if(copy.heroLine1||copy.heroLine2){const h=q('.hero h1');if(h)h.innerHTML=`${esc(copy.heroLine1||'OWN')}<br><em>${esc(copy.heroLine2||'THE NIGHT.')}</em>`;}
+  if(hasCopy('heroLine1')||hasCopy('heroLine2')){const h=q('.hero h1');if(h)h.innerHTML=`${esc(hasCopy('heroLine1')?copy.heroLine1:'OWN')}<br><em>${esc(hasCopy('heroLine2')?copy.heroLine2:'THE NIGHT.')}</em>`;}
   setText('.experience .eyebrow',copy.experienceEyebrow);
-  if(copy.experienceLine1||copy.experienceLine2){const h=q('.experience h2');if(h)h.innerHTML=`${esc(copy.experienceLine1||'その一夜を、')}<br><em>${esc(copy.experienceLine2||'記憶に残る物語へ。')}</em>`;}
-  if(copy.experienceDescription){const p=q('.experience>p:last-child');if(p)p.innerHTML=esc(copy.experienceDescription).replace(/\n/g,'<br>');}
+  if(hasCopy('experienceLine1')||hasCopy('experienceLine2')){const h=q('.experience h2');if(h)h.innerHTML=`${esc(hasCopy('experienceLine1')?copy.experienceLine1:'その一夜を、')}<br><em>${esc(hasCopy('experienceLine2')?copy.experienceLine2:'記憶に残る物語へ。')}</em>`;}
+  if(hasCopy('experienceDescription')){const p=q('.experience>p:last-child');if(p)p.innerHTML=esc(copy.experienceDescription).replace(/\n/g,'<br>');}
   setText('#cast .eyebrow',copy.hostEyebrow);setText('#cast h2',copy.hostTitle);
   setText('#ranking .eyebrow',copy.rankingEyebrow);setText('#ranking h2',copy.rankingTitle);setText('#ranking .section-heading p:not(.eyebrow)',copy.rankingDescription);
   setText('#today .eyebrow',copy.todayEyebrow);setText('#today h2',copy.todayTitle);setText('#today .section-heading>p',copy.todayDescription);
   setText('#news .eyebrow',copy.newsEyebrow);setText('#news h2',copy.newsTitle);
   setText('#system .eyebrow',copy.systemEyebrow);setText('#system h2',copy.systemTitle);setText('#system .system-grid>div>p:last-child',copy.systemDescription);
-  if(copy.footerCopyright){const f=q('footer>span');if(f)f.innerHTML=`© ${new Date().getFullYear()} ${esc(copy.footerCopyright)}`;}
+  if(hasCopy('footerCopyright')){const f=q('footer>span');if(f)f.innerHTML=copy.footerCopyright?`© ${new Date().getFullYear()} ${esc(copy.footerCopyright)}`:'';}
 
   const cast=Array.isArray(SITE.cast)?SITE.cast:[];
   const byId=new Map(cast.map((c,i)=>[castId(c,i),c]));
