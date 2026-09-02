@@ -1,105 +1,15 @@
-<!doctype html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#090807" />
-  <title>The Artemis | Luxury Host Club</title>
-  <meta name="description" content="The Artemis - Luxury Host Club" />
-  <link rel="icon" type="image/png" href="/assets/the-artemis-symbol.png" />
-  <link rel="apple-touch-icon" href="/assets/the-artemis-symbol.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=7" />
-  <link rel="stylesheet" href="/cast-sections.css?v=4" />
-  <style>
-    .reserve-top,[data-open="reservation"],.reservation-card,#reservationModal{display:none!important}
-    .split-section{grid-template-columns:1fr!important}
-    #cast .rank,#today .rank{display:none!important}
-    .hero .crest{width:210px!important;height:165px!important;margin:0 auto 12px!important}
-    @media(max-width:700px){.hero .crest{width:140px!important;height:110px!important;margin-bottom:8px!important}}
-  </style>
-</head>
-<body>
-  <div class="grain" aria-hidden="true"></div>
-  <header class="site-header">
-    <a class="brand" href="#top"><span class="brand-mark">A</span><span><strong id="brandName">The Artemis</strong><small id="brandSubtitle">LUXURY HOST CLUB</small></span></a>
-    <nav class="nav">
-      <a href="#ranking">RANKING<span>ランキング</span></a>
-      <a href="#today">TODAY<span>本日出勤</span></a>
-      <a href="#cast">HOST<span>在籍ホスト</span></a>
-      <a href="#system">SYSTEM<span>料金</span></a>
-      <a href="#event">EVENT<span>イベント</span></a>
-      <a href="#news">NEWS<span>ニュース</span></a>
-      <a href="#access">ACCESS<span>アクセス</span></a>
-      <a href="#recruit">RECRUIT<span>求人</span></a>
-    </nav>
-    <button class="reserve-top" data-open="reservation">RESERVATION</button>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <img id="heroImage" class="hero-bg" src="/assets/hero-lounge.svg" alt="The Artemis ホストクラブ" />
-      <div class="hero-shade"></div>
-      <div class="hero-content reveal">
-        <div class="crest">A</div>
-        <h1 id="heroName">The Artemis</h1><p class="hero-copy" id="heroTagline">夜を、忘れられない夜へ。</p>
-        <p class="hero-intro" id="heroIntro"></p>
-        <button class="gold-button" data-open="reservation">ご予約 <span>→</span></button>
-      </div>
-    </section>
-
-    <section class="ranking-section shell" id="ranking">
-      <div class="section-heading reveal">
-        <div><p class="eyebrow">HOST RANKING</p><h2>RANKING TOP 3</h2></div>
-        <p class="section-lead">The Artemisを代表するTOPホスト。</p>
-      </div>
-      <div class="ranking-grid" id="rankingGrid"></div>
-    </section>
-
-    <section class="section shell" id="today">
-      <div class="section-heading reveal"><div><p class="eyebrow">TODAY'S HOST</p><h2>本日の出勤ホスト</h2></div><p class="section-lead">本日お迎えするホストをご紹介します。</p></div>
-      <div class="cast-grid" id="todayCastGrid"></div>
-    </section>
-
-    <section class="section shell roster-section" id="cast">
-      <div class="section-heading reveal"><div><p class="eyebrow">ALL HOSTS</p><h2>在籍ホスト</h2></div><p class="section-lead">The Artemisに在籍するホスト一覧です。</p></div>
-      <div class="roster-grid" id="allCastGrid"></div>
-    </section>
-
-    <section class="split-section shell" id="event">
-      <article class="event-card reveal"><p class="eyebrow">SPECIAL EVENT</p><h2 id="eventTitle"></h2><p class="event-jp" id="eventHeading"></p><p id="eventDescription"></p><div class="event-date" id="eventDate"></div></article>
-      <article class="reservation-card reveal"><p class="eyebrow">RESERVATION</p><h2>ご予約はこちら</h2><p>お席・ご指名・VIPのご相談までお気軽にお問い合わせください。</p><button class="gold-button" data-open="reservation">予約フォーム <span>→</span></button><p class="tel" id="reservationTel"></p><small>受付時間 19:00 - LAST</small></article>
-    </section>
-
-    <section class="section shell" id="news"><div class="section-heading reveal"><div><p class="eyebrow">NEWS</p><h2>最新情報</h2></div></div><div class="news-list reveal" id="newsList"></div></section>
-
-    <section class="section shell three-grid">
-      <article class="info-card reveal" id="system"><p class="eyebrow">SYSTEM</p><h2>料金システム</h2><dl class="price-list" id="priceList"></dl></article>
-      <article class="info-card reveal" id="access"><p class="eyebrow">ACCESS</p><h2>アクセス</h2><div id="accessInfo"></div></article>
-      <article class="info-card recruit-card reveal" id="recruit"><p class="eyebrow">RECRUIT</p><h2 id="recruitHeading"></h2><p id="recruitLead"></p><p id="recruitNote"></p><button class="text-button" data-open="recruit">応募する →</button></article>
-    </section>
-  </main>
-
-  <footer class="footer shell"><div class="footer-brand"><span class="brand-mark small">A</span><div><strong id="footerName">The Artemis</strong><small>LUXURY HOST CLUB</small></div></div><div class="footer-links" id="socialLinks"></div><p>© <span id="year"></span> The Artemis. All Rights Reserved.</p></footer>
-
-  <dialog class="modal" id="reservationModal">
-    <form class="modal-card" id="reservationForm">
-      <button type="button" class="modal-close" data-close>×</button><p class="eyebrow">RESERVATION</p><h2>ご予約フォーム</h2>
-      <div class="form-grid"><label>お名前 *<input name="name" required maxlength="100"></label><label>電話番号 *<input name="phone" required maxlength="60"></label><label>メール<input name="email" type="email" maxlength="160"></label><label>ご来店日 *<input name="date" type="date" required></label><label>ご来店時間 *<input name="time" type="time" required></label><label>人数<input name="people" type="number" min="1" max="30" value="2"></label><label class="wide">ご指名<select name="cast" id="castSelect"><option value="">指定なし</option></select></label><label class="check wide"><input name="vip" type="checkbox"> VIP席を希望する</label><label class="wide">ご要望<textarea name="message" rows="4" maxlength="1200"></textarea></label><input class="hp" name="website" tabindex="-1" autocomplete="off"></div>
-      <button class="gold-button submit" type="submit">予約を送信 <span>→</span></button><p class="form-message" aria-live="polite"></p>
-    </form>
-  </dialog>
-
-  <dialog class="modal" id="recruitModal">
-    <form class="modal-card" id="recruitForm">
-      <button type="button" class="modal-close" data-close>×</button><p class="eyebrow">RECRUIT</p><h2>応募フォーム</h2>
-      <div class="form-grid"><label>お名前 *<input name="name" required maxlength="100"></label><label>年齢<input name="age" type="number" min="18" max="99"></label><label>電話番号 *<input name="phone" required maxlength="60"></label><label>メール<input name="email" type="email" maxlength="160"></label><label class="wide">経験<textarea name="experience" rows="3" maxlength="300" placeholder="未経験 / 経験あり など"></textarea></label><label class="wide">メッセージ<textarea name="message" rows="4" maxlength="1200"></textarea></label><input class="hp" name="website" tabindex="-1" autocomplete="off"></div>
-      <button class="gold-button submit" type="submit">応募を送信 <span>→</span></button><p class="form-message" aria-live="polite"></p>
-    </form>
-  </dialog>
-
-  <script src="/js/site.js?v=7"></script>
-</body>
-</html>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080808"><title>The Artemis｜ホストクラブ</title><meta name="description" content="新宿・歌舞伎町のホストクラブ The Artemis"><link rel="icon" href="/assets/the-artemis-symbol.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css?v=9"><link rel="stylesheet" href="/cast-sections.css?v=4"></head><body>
+<header class="site-header"><a class="brand" href="#top" aria-label="The Artemis ホーム"><span class="brand-mark">A</span><span><strong id="brandName">The Artemis</strong><small id="brandSubtitle">HOST CLUB</small></span></a><nav class="nav" aria-label="メインメニュー"><a href="#cast">HOST</a><a href="#ranking">RANKING</a><a href="#news">NEWS</a><a href="#system">SYSTEM</a><a href="#access">ACCESS</a></nav><button class="reserve-top" data-open="reservation">RESERVATION</button></header>
+<main id="top"><section class="hero"><div class="hero-copy-block reveal"><p class="hero-kicker">SHINJUKU KABUKICHO · EST. 2026</p><h1>OWN<br><em>THE NIGHT.</em></h1><p class="hero-jp" id="heroTagline">まだ知らない、最高の夜へ。</p><p class="hero-intro" id="heroIntro"></p><div class="hero-actions"><button class="primary-button" data-open="reservation">ご予約はこちら</button><a href="#cast">HOSTを見る</a></div></div><figure class="hero-visual"><img id="heroImage" src="/assets/hero-host.png" alt="The Artemisのホストたち"><figcaption><span>OPEN 19:00</span><span>CLOSE 25:00</span></figcaption></figure></section>
+<section class="experience shell reveal"><p class="eyebrow">THE ARTEMIS EXPERIENCE</p><h2>その一夜を、<br><em>記憶に残る物語へ。</em></h2><p>洗練された空間と、一流のホスピタリティ。<br>The Artemisは、日常を忘れる特別な時間をお届けします。</p></section>
+<section class="section shell" id="cast"><div class="section-heading reveal"><div><p class="eyebrow">MEET OUR HOSTS</p><h2>HOSTS</h2></div><a href="#ranking">VIEW RANKING →</a></div><div class="cast-grid" id="allCastGrid"></div></section>
+<section class="ranking-section" id="ranking"><div class="shell"><div class="section-heading reveal"><div><p class="eyebrow">MONTHLY SALES</p><h2>RANKING</h2><p>今月、最も輝いたホストをご紹介。</p></div></div><div class="ranking-grid" id="rankingGrid"></div></div></section>
+<section class="section shell" id="today"><div class="section-heading reveal"><div><p class="eyebrow">TODAY'S HOST</p><h2>TODAY</h2></div><p>本日お迎えするホストをご紹介します。</p></div><div class="cast-grid" id="todayCastGrid"></div></section>
+<section class="section shell" id="news"><div class="section-heading reveal"><div><p class="eyebrow">LATEST UPDATES</p><h2>NEWS & EVENT</h2></div></div><div class="news-list reveal" id="newsList"></div></section>
+<section class="system-section" id="system"><div class="shell system-grid"><div><p class="eyebrow">PRICE GUIDE</p><h2>SYSTEM</h2><p>初めてのお客様にも、安心してお楽しみいただける明朗な料金システムです。</p></div><dl class="price-list" id="priceList"></dl></div></section>
+<section class="reserve-section" id="reservation"><div><p class="eyebrow">BOOK YOUR NIGHT</p><h2>RESERVATION</h2><p>ご予約・お問い合わせはフォームより承ります。</p><button class="primary-button" data-open="reservation">予約フォームへ</button></div></section>
+<section class="access-section shell" id="access"><div class="footer-logo"><span>A</span><strong id="footerName">The Artemis</strong><small>HOST CLUB</small></div><div id="accessInfo"></div><div class="footer-actions"><button data-open="recruit">HOST RECRUIT</button><a href="/admin/">ADMIN</a></div></section></main>
+<footer><span>© <b id="year"></b> The Artemis. ALL RIGHTS RESERVED.</span><div id="socialLinks"></div></footer>
+<div class="hidden-data" aria-hidden="true"><div id="eventTitle"></div><div id="eventHeading"></div><div id="eventDescription"></div><div id="eventDate"></div><div id="recruitHeading"></div><div id="recruitLead"></div><div id="recruitNote"></div><div id="reservationTel"></div></div>
+<dialog class="modal" id="reservationModal"><form class="modal-card" id="reservationForm"><button type="button" class="modal-close" data-close>×</button><p class="eyebrow">RESERVATION</p><h2>ご予約フォーム</h2><div class="form-grid"><label>お名前 *<input name="name" required></label><label>電話番号 *<input name="phone" required></label><label>メール<input name="email" type="email"></label><label>ご来店日 *<input name="date" type="date" required></label><label>ご来店時間 *<input name="time" type="time" required></label><label>人数<input name="people" type="number" min="1" value="2"></label><label class="wide">ご指名<select name="cast" id="castSelect"><option value="">指定なし</option></select></label><label class="wide">ご要望<textarea name="message" rows="4"></textarea></label><input class="hp" name="website"></div><button class="primary-button submit">予約を送信</button><p class="form-message"></p></form></dialog>
+<dialog class="modal" id="recruitModal"><form class="modal-card" id="recruitForm"><button type="button" class="modal-close" data-close>×</button><p class="eyebrow">RECRUIT</p><h2>応募フォーム</h2><div class="form-grid"><label>お名前 *<input name="name" required></label><label>年齢<input name="age" type="number" min="18"></label><label>電話番号 *<input name="phone" required></label><label>メール<input name="email" type="email"></label><label class="wide">経験<textarea name="experience" rows="3"></textarea></label><label class="wide">メッセージ<textarea name="message" rows="4"></textarea></label><input class="hp" name="website"></div><button class="primary-button submit">応募を送信</button><p class="form-message"></p></form></dialog><script src="/js/site.js?v=9"></script></body></html>
