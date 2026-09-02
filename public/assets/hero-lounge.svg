@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="The Artemis luxury lounge background">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#050403"/><stop offset=".48" stop-color="#171109"/><stop offset="1" stop-color="#050403"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="#d6ad62" stop-opacity=".45"/><stop offset="1" stop-color="#d6ad62" stop-opacity="0"/></radialGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f2d49b"/><stop offset="1" stop-color="#8a642e"/></linearGradient>
+  <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<ellipse cx="800" cy="110" rx="520" ry="300" fill="url(#glow)" opacity=".46"/>
+<g opacity=".45" stroke="#cda75f" fill="none">
+  <path d="M80 900V520Q220 380 360 520V900"/>
+  <path d="M1240 900V520Q1380 380 1520 520V900"/>
+  <path d="M330 900V470Q520 275 710 470V900" opacity=".32"/>
+  <path d="M890 900V470Q1080 275 1270 470V900" opacity=".32"/>
+</g>
+<g transform="translate(800 70)" stroke="url(#gold)" fill="none" opacity=".86">
+  <path d="M0 0v145"/>
+  <path d="M-145 75q145 105 290 0"/>
+  <path d="M-220 112q220 150 440 0" opacity=".7"/>
+</g>
+<g fill="#f1d294">
+  <circle cx="655" cy="162" r="7"/><circle cx="730" cy="190" r="6"/><circle cx="800" cy="207" r="8"/><circle cx="870" cy="190" r="6"/><circle cx="945" cy="162" r="7"/>
+  <circle cx="580" cy="190" r="4" opacity=".6"/><circle cx="1020" cy="190" r="4" opacity=".6"/>
+</g>
+<g filter="url(#blur)" fill="#d6ad62" opacity=".18"><circle cx="650" cy="210" r="52"/><circle cx="950" cy="210" r="52"/></g>
+<path d="M0 745Q240 660 430 730T800 722t370 8q190-70 430 15V900H0Z" fill="#080706"/>
+<path d="M0 795Q230 720 420 775t380 12q190-60 380-12t420 20" fill="none" stroke="#7f5c2c" stroke-opacity=".35"/>
+<g opacity=".42"><rect x="150" y="610" width="290" height="110" rx="55" fill="#20170e"/><rect x="1160" y="610" width="290" height="110" rx="55" fill="#20170e"/><rect x="580" y="650" width="440" height="145" rx="72" fill="#1d150d"/></g>
+<g fill="#cda75f" opacity=".22"><circle cx="180" cy="280" r="3"/><circle cx="230" cy="205" r="2"/><circle cx="1390" cy="260" r="3"/><circle cx="1340" cy="190" r="2"/><circle cx="440" cy="155" r="2"/><circle cx="1150" cy="130" r="2"/></g>
+</svg>

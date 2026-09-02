@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: the-artemis-host
+    runtime: static
+    autoDeployTrigger: commit
+    buildCommand: echo "The Artemis static site ready"
+    staticPublishPath: ./public
+    routes:
+      - type: rewrite
+        source: /admin
+        destination: /admin.html
+      - type: rewrite
+        source: /cast
+        destination: /cast.html
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
