@@ -42,7 +42,7 @@ function render(){
     hero.src=b.heroImage||'/assets/26327603_l.jpg';
     if(hero.complete&&hero.naturalWidth)hero.classList.add('is-ready');
   }
-  document.title=`${b.name||'The Artemis'} | Luxury Host Club`;
+  document.title=b.name||'The Artemis';
 
   let copy=SITE.copy||{};
   if(!Object.keys(copy).length&&String(SITE.event?.description||'').startsWith('__SITE_COPY__')){try{copy=JSON.parse(String(SITE.event.description).slice(13))}catch{copy={}}}
