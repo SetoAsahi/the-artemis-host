@@ -53,7 +53,7 @@ async function showAdmin(){try{DATA=await api('/api/admin/data');DATA.reservatio
 const titles={dashboard:'ダッシュボード',content:'基本情報',cast:'在籍ホスト',castops:'ランキング・出勤',system:'料金',news:'ニュース',reservations:'予約',recruits:'求人応募'};
 $$('[data-tab]').forEach(b=>b.addEventListener('click',()=>{$$('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));$$('[data-panel]').forEach(p=>p.classList.toggle('active',p.dataset.panel===b.dataset.tab));$('#pageTitle').textContent=titles[b.dataset.tab];if(b.dataset.tab==='castops')renderCastOps();}));
 
-function field(label,path,value,type='text',wide=false){if(path.startsWith('copy.')){const key=path.slice(5);if(Object.prototype.hasOwnProperty.call(site.copy||{},key))value=site.copy[key]}return `<label class="field ${wide?'wide':''}"><span>${label}</span>${type==='textarea'?`<textarea data-path="${path}">${esc(value)}</textarea>`:`<input data-path="${path}" value="${esc(value)}" type="${type}">`}</label>`}
+function field(label,path,value,type='text',wide=false){if(path.startsWith('copy.')){const key=path.slice(5);if(Object.prototype.hasOwnProperty.call(site.copy||{},key))value=site.copy[key];else if(key==='heroKicker')value=''}return `<label class="field ${wide?'wide':''}"><span>${label}</span>${type==='textarea'?`<textarea data-path="${path}">${esc(value)}</textarea>`:`<input data-path="${path}" value="${esc(value)}" type="${type}">`}</label>`}
 function bindPaths(){$$('[data-path]').forEach(el=>el.addEventListener('input',()=>{const parts=el.dataset.path.split('.');let obj=site;for(let i=0;i<parts.length-1;i++)obj=obj[parts[i]];obj[parts.at(-1)]=el.value;markDirty()}));}
 function markDirty(){$('#saveState').textContent='未保存の変更あり';}
 
